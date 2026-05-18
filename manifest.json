@@ -3,7 +3,7 @@
   "short_name": "Devindra",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f4f7ff",
+  "background_color": "#F4F7FF",
   "theme_color": "#123AAE",
   "orientation": "portrait"
 }

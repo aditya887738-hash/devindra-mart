@@ -1,6 +1,39 @@
+import { useEffect, useState } from "react";
 import Shell from "../../shared/Shell";
-import { SUPPORT, canUseWhatsAppOrder, resolveStoreOpen, storeModeRules, translated } from "../../shared/engines";
-const stores=[{id:"devindra-master",slug:"devindra-mart-wholesale",name:"Devindra Mart Wholesale",mode:"wholesale"},{id:"fastfood1",name:"Fast Food Corner",mode:"retail"}];
-const products=[{product:"Fortune Oil",product_hinglish:"Fortune Tel",category:"Oil",unit:"Carton",loosePrice:150,cartonPrice:6960,stock:20,storeId:"devindra-master"},{product:"Burger",category:"Fast Food",unit:"Piece",loosePrice:69,stock:20,storeId:"fastfood1"}];
-export default function CustomerApp(){ const open=resolveStoreOpen(stores); return <Shell title="Devindra Mart" subtitle="Customer App"><section className="grid"><Card title="Store Open Logic" text={open.action}/><Card title="Support" text={SUPPORT.phone}/><Card title="WhatsApp Order" text={canUseWhatsAppOrder(stores[0])?"Only Devindra Wholesale":"Off"}/><Card title="Language" text="English / Hindi / Hinglish"/>{products.map(p=><Card key={p.product} title={translated(p,"product","hinglish")} text={`${p.category} • ₹${p.loosePrice} • ${p.unit}`}/>)}</section></Shell> }
-function Card({title,text}){return <div className="card"><h3>{title}</h3><p>{text}</p><button>Add / Open</button></div>}
+import { listenProducts, sampleStores, createOrder, canUseWhatsAppOrder, SUPPORT_NUMBER } from "../../firebase/api";
+
+export default function CustomerApp() {
+  const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+  useEffect(() => listenProducts(setProducts), []);
+
+  const add = (p) => setCart((c) => {
+    const found = c.find((x) => x.id === p.id);
+    if (found) return c.map((x) => x.id === p.id ? { ...x, qty: (x.qty || 1) + 1 } : x);
+    return [...c, { ...p, qty: 1 }];
+  });
+
+  const placeOrder = async () => {
+    if (!cart.length) return alert("Cart empty");
+    await createOrder({ customerId: "demo-customer", store: sampleStores[0], items: cart, address: "Warishnagar" });
+    setCart([]);
+    alert("Order placed. Admin/Billing me realtime order aayega agar Firebase env connected hai.");
+  };
+
+  return (
+    <Shell title="Devindra Mart" subtitle="Customer App" icon="🔔" nav={["🏠 Home","▦ Categories","🛒 Cart","📒 Khata","👤 Profile"]}>
+      <section className="hero"><div><h1>Devindra Mart Wholesale</h1><p>Customer app only. Admin/Billing/Rider links yahan nahi dikhte.</p></div><div className="heroEmoji">🛒</div></section>
+      <div className="notice">Support / WhatsApp Support: {SUPPORT_NUMBER}. WhatsApp order only Devindra Mart Wholesale.</div>
+      <div className="search">🔍 Search products, brands, categories... 🎙️</div>
+      <div className="chips">{["🛢️ Tel/Oil","🍚 Chawal","🌾 Atta","🥣 Dal","🧂 Masale"].map(x => <div className="chip" key={x}>{x}</div>)}</div>
+      <div className="head"><h2>Stores</h2><span className="tag">1 store direct / multiple search</span></div>
+      <section className="grid">
+        {sampleStores.map((s) => <div className="card" key={s.id}><span className="tag">{s.mode}</span><h3>{s.name}</h3><p>{s.mode === "wholesale" ? "Bulk, carton, loose/patta, khata available." : "Retail single orders."}</p><p>{canUseWhatsAppOrder(s) ? "WhatsApp Order ON" : "WhatsApp Order OFF"}</p><button>Open Store</button></div>)}
+      </section>
+      <div className="head"><h2>Products</h2><button onClick={placeOrder}>Place Order ({cart.length})</button></div>
+      <section className="grid">
+        {products.map((p) => <div className="card product" key={p.id}><div className="pimg">📦</div><div><span className="tag">{p.badge}</span><h3>{p.product}</h3><p>{p.category} • {p.unit}</p><p className="price">₹{p.loosePrice}</p><button onClick={() => add(p)}>Add</button></div></div>)}
+      </section>
+    </Shell>
+  );
+}
