@@ -1,14 +1,16 @@
-# Devindra Mart React + Firebase Live Base
+# Devindra Mart Flat React Build Fix
 
-Netlify:
-- Build command: npm run build
-- Publish directory: dist
+This fixes Netlify error:
+Failed to resolve /src/main.jsx from index.html
+
+Build:
+npm run build
+
+Publish:
+dist
 
 Routes:
-- / Customer
-- /admin Admin
-- /billing Billing
-- /rider Rider
-
-Use `.env.example` values in Netlify Environment Variables for real Firebase.
-Without env, app opens in safe demo mode.
+/
+/admin
+/billing
+/rider
