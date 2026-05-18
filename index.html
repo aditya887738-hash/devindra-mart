@@ -1,121 +1,29 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<meta name="theme-color" content="#123AAE"/>
-<link rel="manifest" href="/manifest.json"/>
-<title>Devindra Mart Flow</title>
-<style>
-:root{--blue:#123AAE;--dark:#0A1F5C;--bg:#F4F7FF;--card:#fff;--border:#D8E4FF;--green:#16A34A;--orange:#EA580C;--red:#DC2626;--purple:#6D28D9}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);font-family:Arial,system-ui,sans-serif;color:#0b163f}button{border:0}
-.app{min-height:100vh;padding-bottom:88px}.top{position:sticky;top:0;z-index:20;background:white;border-bottom:1px solid var(--border);padding:12px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px}.brand{display:flex;align-items:center;gap:10px}.logo{width:52px;height:52px;border-radius:16px;background:linear-gradient(135deg,var(--blue),var(--dark));color:white;display:grid;place-items:center;font-weight:900;font-size:22px}.brand h2{margin:0;font-size:21px}.brand p{margin:2px 0 0;color:#667085;font-weight:700}.topIcon{font-size:24px;background:#eef4ff;border-radius:14px;padding:10px}.wrap{max-width:1180px;margin:auto;padding:14px}.view{display:none}.view.active{display:block}
-.hero{background:linear-gradient(135deg,var(--blue),var(--dark));color:white;border-radius:28px;padding:26px;display:flex;align-items:center;justify-content:space-between;min-height:190px;box-shadow:0 18px 55px #123aae29}.hero h1{font-size:34px;margin:0 0 12px}.hero p{font-size:18px;line-height:1.45;margin:0}.heroIcon{font-size:74px;opacity:.85}.search{margin:14px 0;background:white;border-radius:17px;padding:14px 16px;border:1px solid var(--border);display:flex;align-items:center;gap:10px;color:#667085;font-weight:700}.quick{display:flex;gap:12px;overflow:auto;padding:4px 0 16px}.qitem{min-width:84px;background:white;border:1px solid var(--border);border-radius:18px;padding:12px;text-align:center;font-weight:800}.qitem .emoji{font-size:31px}.sectionHead{display:flex;align-items:center;justify-content:space-between;margin:8px 0 12px}.sectionHead h2{margin:0;font-size:25px}.toggle button,.btn{background:var(--blue);color:white;padding:11px 14px;border-radius:14px;font-weight:900}.toggle .light,.btn.light{background:white;color:var(--blue);border:1px solid var(--border)}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:white;border:1px solid var(--border);border-radius:24px;padding:18px;box-shadow:0 10px 35px #123aae14}.card h3{margin:0 0 8px;font-size:20px}.card p{margin:8px 0;color:#667085;font-weight:700;line-height:1.45}.badge{display:inline-block;border-radius:999px;padding:7px 11px;background:#fff4d6;color:#7a4b00;font-weight:900;font-size:12px;margin-bottom:10px}.badge.green{background:#dcfce7;color:#166534}.badge.blue{background:#eef4ff;color:var(--blue)}.badge.red{background:#fee2e2;color:#991b1b}.product{display:flex;gap:13px}.pimg{width:72px;height:72px;border-radius:17px;background:#eef4ff;display:grid;place-items:center;font-size:38px}.price{font-size:22px;font-weight:900;color:var(--blue)}.old{text-decoration:line-through;color:#98a2b3;font-size:14px}.qty{display:flex;gap:8px;align-items:center;margin-top:10px}.qty button{width:34px;height:34px;border-radius:11px;background:#eef4ff;color:var(--blue);font-weight:900}.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:16px}.flowStep{background:white;border:1px solid var(--border);border-radius:20px;padding:15px;text-align:center;font-weight:900}.flowStep span{display:block;font-size:30px;margin-bottom:8px}.locked{background:#f8fafc;border:1px dashed #98a2b3;border-radius:22px;padding:25px;text-align:center}.lock{font-size:54px}.list{display:flex;flex-direction:column;gap:12px}.rowCard{background:white;border:1px solid var(--border);border-radius:18px;padding:15px;display:flex;align-items:center;justify-content:space-between;gap:12px}.mini{font-size:13px;color:#667085;font-weight:800}.bottom{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:30;background:#071329;border-radius:28px;padding:9px;display:flex;gap:8px;box-shadow:0 15px 45px #0005}.bottom a{color:white;text-decoration:none;background:#17243a;border-radius:20px;padding:13px 16px;font-weight:900;white-space:nowrap}.adminStats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}.stat{background:white;border:1px solid var(--border);border-radius:21px;padding:18px}.stat b{font-size:28px;color:var(--blue)}.success{color:var(--green);font-weight:900}.warn{color:var(--orange);font-weight:900}.danger{color:var(--red);font-weight:900}.notice{background:#ecfdf3;border:1px solid #bbf7d0;border-radius:18px;padding:14px;color:#166534;font-weight:900;margin:12px 0}.langBar{display:flex;gap:8px;margin:10px 0}.langBar button{background:#eef4ff;color:var(--blue);border-radius:999px;padding:9px 12px;font-weight:900}
-@media(max-width:850px){.grid,.adminStats{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.hero{display:block}.hero h1{font-size:30px}.heroIcon{text-align:center;margin-top:20px}.bottom{width:95%;overflow:auto}.bottom a{font-size:14px;padding:12px}.top{align-items:flex-start}.brand h2{font-size:19px}}
-</style>
-</head>
-<body>
-<div class="app">
-<header class="top">
-  <div class="brand"><div class="logo">DM</div><div><h2>Devindra Mart</h2><p id="sub">Wholesale + Retail</p></div></div>
-  <div class="topIcon">🔔</div>
-</header>
-
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Devindra Mart</title><style>
+body{margin:0;background:#F4F7FF;font-family:Arial,sans-serif;color:#0A1F5C}
+header{position:sticky;top:0;background:white;padding:14px 18px;border-bottom:1px solid #D8E4FF;display:flex;justify-content:space-between;align-items:center;z-index:5}
+.logo{width:54px;height:54px;border-radius:16px;background:#123AAE;color:white;display:grid;place-items:center;font-weight:900;font-size:24px}
+.brand{display:flex;gap:12px;align-items:center}.brand h2{margin:0}.brand p{margin:2px 0;color:#667085;font-weight:700}
+.wrap{max-width:1100px;margin:auto;padding:18px 18px 95px}
+.hero{background:linear-gradient(135deg,#123AAE,#0A1F5C);color:white;border-radius:30px;padding:28px;margin-bottom:18px;min-height:170px}
+.hero h1{font-size:34px;margin:0 0 10px}.hero p{font-size:19px;line-height:1.4}
+.search{background:white;border:1px solid #D8E4FF;border-radius:18px;padding:16px;margin:14px 0;color:#667085;font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{background:white;border:1px solid #D8E4FF;border-radius:24px;padding:20px;box-shadow:0 10px 35px #123aae14}.card h3{font-size:22px;margin:0 0 8px}.card p{color:#667085;font-weight:700}.tag{display:inline-block;background:#EEF4FF;color:#123AAE;padding:8px 12px;border-radius:999px;font-weight:900;font-size:12px;margin-bottom:9px}.price{font-size:24px;font-weight:900;color:#123AAE}
+button{background:#123AAE;color:white;border:0;border-radius:14px;padding:12px 16px;font-weight:900}
+.bottom{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);width:94%;max-width:520px;background:#071329;border-radius:28px;padding:10px;display:flex;gap:8px;overflow:auto}.bottom span{background:#17243a;color:white;padding:13px 15px;border-radius:20px;font-weight:900;white-space:nowrap}
+.notice{background:#ecfdf3;color:#166534;border:1px solid #bbf7d0;border-radius:18px;padding:14px;margin:14px 0;font-weight:900}.red{background:#fef2f2;color:#991b1b;border-color:#fecaca}.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}.step{background:white;border:1px solid #D8E4FF;border-radius:20px;padding:15px;text-align:center;font-weight:900}.step span{display:block;font-size:30px}
+@media(max-width:850px){.grid{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.hero h1{font-size:30px}.bottom span{font-size:14px}header{align-items:flex-start}}
+</style></head><body>
+<header><div class="brand"><div class="logo">DM</div><div><h2>Devindra Mart</h2><p>Customer App</p></div></div><div style="font-size:28px">🔔</div></header>
 <main class="wrap">
-<section id="customer" class="view">
-  <div class="hero"><div><h1>Devindra Mart Wholesale</h1><p>Logo slider + shortcuts + grid/list + search + all features.</p></div><div class="heroIcon">🛒</div></div>
-  <div class="langBar"><button onclick="setLang('english')">English</button><button onclick="setLang('hindi')">Hindi</button><button onclick="setLang('hinglish')">Hinglish</button></div>
-  <div class="search">🔍 Search products, brands, categories... 🎙️</div>
-  <div class="quick">
-    <div class="qitem"><div class="emoji">🛢️</div>Tel/Oil</div><div class="qitem"><div class="emoji">🍚</div>Chawal</div><div class="qitem"><div class="emoji">🌾</div>Atta</div><div class="qitem"><div class="emoji">🥣</div>Dal</div><div class="qitem"><div class="emoji">🧂</div>Masale</div><div class="qitem"><div class="emoji">🥤</div>Cold Drink</div>
-  </div>
-  <div class="sectionHead"><h2>Stores</h2><span class="badge blue">1 store direct open / multiple search</span></div>
-  <div class="grid">
-    <div class="card"><span class="badge">wholesale</span><h3>🏆 Devindra Mart Wholesale</h3><p>Bulk kirana, carton, loose/patta rate, khata available.</p><p><b>WhatsApp Order:</b> Only here</p><button class="btn">Open Store</button></div>
-    <div class="card"><span class="badge green">retail</span><h3>🍔 Fast Food Corner</h3><p>Retail orders, no khata, simple delivery.</p><button class="btn light">Open Store</button></div>
-    <div class="card"><span class="badge blue">support</span><h3>📞 Global Support</h3><p>No merchant private number visible.</p><p class="price">7678256489</p></div>
-  </div>
-  <div class="sectionHead"><h2>All Products</h2><div class="toggle"><button>Grid</button><button class="light">List</button></div></div>
-  <div class="grid">
-    <div class="card product"><div class="pimg">🛢️</div><div><span class="badge blue">Best Value</span><h3>Fortune Sunlite Oil</h3><p><span class="price">₹150</span> <span class="old">₹160</span></p><div class="qty"><button>-</button><b>1</b><button>+</button></div></div></div>
-    <div class="card product"><div class="pimg">🍚</div><div><span class="badge blue">Offer</span><h3>India Gate Rice 1kg</h3><p><span class="price">₹120</span> <span class="old">₹135</span></p><div class="qty"><button>-</button><b>1</b><button>+</button></div></div></div>
-    <div class="card product"><div class="pimg">🌾</div><div><span class="badge blue">Scheme Active</span><h3>Aashirvaad Atta 5kg</h3><p><span class="price">₹240</span> <span class="old">₹260</span></p><div class="qty"><button>-</button><b>1</b><button>+</button></div></div></div>
-    <div class="card product"><div class="pimg">🧂</div><div><span class="badge red">Low Stock</span><h3>Tata Salt 1kg</h3><p><span class="price">₹20</span> <span class="old">₹25</span></p><div class="qty"><button>-</button><b>1</b><button>+</button></div></div></div>
-    <div class="card product"><div class="pimg">🧼</div><div><span class="badge blue">Offer</span><h3>Surf Excel 2kg</h3><p><span class="price">₹285</span> <span class="old">₹310</span></p><div class="qty"><button>-</button><b>1</b><button>+</button></div></div></div>
-    <div class="card product"><div class="pimg">☕</div><div><span class="badge blue">Best Value</span><h3>Tata Tea Premium</h3><p><span class="price">₹220</span> <span class="old">₹240</span></p><div class="qty"><button>-</button><b>1</b><button>+</button></div></div></div>
-  </div>
+<section class="hero"><h1>Devindra Mart Wholesale</h1><p>Customer app only. Admin/Billing/Rider links yahan kahin nahi dikhte.</p></section>
+<div class="notice">Customer route: / — secret apps separate direct links se hi open honge.</div>
+<div class="search">🔍 Search products, brands, categories... 🎙️</div>
+<section class="grid">
+<div class="card"><span class="tag">wholesale</span><h3>🏆 Devindra Mart Wholesale</h3><p>Bulk kirana, carton, loose/patta rate, khata available.</p><p><b>WhatsApp Order:</b> only this store</p><button>Open Store</button></div>
+<div class="card"><span class="tag">retail</span><h3>🍔 Retail Store</h3><p>Retail single quantity, no khata.</p><button>Open Store</button></div>
+<div class="card"><span class="tag">support</span><h3>📞 Support</h3><p>No merchant private number visible.</p><p class="price">7678256489</p></div>
+<div class="card"><h3>🛢️ Fortune Oil</h3><p>Loose + carton pricing, variant selection.</p><p class="price">₹150</p><button>Add</button></div>
+<div class="card"><h3>🌾 Aashirvaad Atta</h3><p>Scheme active + carton suggestion.</p><p class="price">₹240</p><button>Add</button></div>
+<div class="card"><h3>🧂 Tata Salt</h3><p>Low stock badge and admin alert.</p><p class="price">₹20</p><button>Add</button></div>
 </section>
-
-<section id="admin" class="view">
-  <h1>Admin Panel — Full Control</h1><div class="notice">Admin controls stores, riders, khata, settlement, banners, delivery and notifications.</div>
-  <div class="adminStats"><div class="stat"><p>Total Orders</p><b>1,254</b><p class="success">+12%</p></div><div class="stat"><p>Sales</p><b>₹12.4L</b><p class="success">+18%</p></div><div class="stat"><p>Riders</p><b>87</b></div><div class="stat"><p>Pending Approval</p><b>15</b></div></div>
-  <div class="grid">
-    <div class="card"><h3>🏪 Store/Merchant Approval</h3><p>Only approved stores go live.</p><button class="btn">Review</button></div>
-    <div class="card"><h3>🛵 Rider Approval</h3><p>Aadhaar/PAN/address proof + preferred area/shop request.</p><button class="btn">Approve</button></div>
-    <div class="card"><h3>📦 Excel Upload</h3><p>5000+ products, duplicate merge, skipped row report.</p><button class="btn">Upload</button></div>
-    <div class="card"><h3>🔔 Auto Notifications</h3><p>Order, khata, offer, promo, low stock alerts.</p><button class="btn">Configure</button></div>
-    <div class="card"><h3>🧾 Khata Control</h3><p>Total due visible to customer, no credit limit display.</p><button class="btn">Open</button></div>
-    <div class="card"><h3>🗺️ Zone / Area</h3><p>Warishnagar, Khanpur, village route, market area.</p><button class="btn">Map</button></div>
-  </div>
-</section>
-
-<section id="billing" class="view">
-  <h1>Billing / Merchant App</h1><div class="notice">Merchant sees own store only. No master admin, no other store data.</div>
-  <div class="grid">
-    <div class="card"><h3>📥 New Orders</h3><p>#DM12540 • 2 items • ₹685</p><button class="btn">Start Packing</button></div>
-    <div class="card"><h3>✅ Mark Ready</h3><p>Ready click generates locked pickup alert.</p><button class="btn">Mark as Ready</button></div>
-    <div class="card"><h3>🧾 Invoice / Packing Slip</h3><p>No customer address on merchant slip, pickup code only.</p><button class="btn">Print</button></div>
-    <div class="card"><h3>💰 Settlement</h3><p>Product amount - platform commission = merchant payable.</p><p class="price">₹8,000</p></div>
-    <div class="card"><h3>📤 Dispatch Update</h3><p>Placed → Confirmed → Packed → Dispatched.</p><button class="btn">Update</button></div>
-    <div class="card"><h3>🖼️ Banner / Product Image</h3><p>Cloudinary upload support.</p><button class="btn">Upload</button></div>
-  </div>
-</section>
-
-<section id="rider" class="view">
-  <h1>Rider App — Locked Order Alert</h1><div class="notice">Without pickup code/QR, no customer/order details visible.</div>
-  <div class="flow"><div class="flowStep"><span>1️⃣</span>Open App</div><div class="flowStep"><span>2️⃣</span>Enter/Scan Code</div><div class="flowStep"><span>3️⃣</span>Orders Unlock</div><div class="flowStep"><span>4️⃣</span>Deliver + Settle</div></div>
-  <div class="grid">
-    <div class="card"><h3>🔐 Pickup Code</h3><p>Format: AREA-DATE-4DIGIT</p><p class="price">WAR-250518-4832</p><button class="btn">Enter Code</button></div>
-    <div class="card"><h3>📦 Before Code</h3><p>Rider sees ready count, store/branch name, enter code/QR only.</p><div class="locked"><div class="lock">🔒</div>No details visible</div></div>
-    <div class="card"><h3>✅ After Verified</h3><p>Customer name, address, map, amount, call button visible. Phone text hidden.</p><button class="btn green">Navigate</button></div>
-    <div class="card"><h3>➕ Multiple Unlock</h3><p>One code = one order. Second code unlocks second order.</p></div>
-    <div class="card"><h3>💵 COD Settlement</h3><p>₹1 mismatch blocks submit. Denomination required.</p><button class="btn">Submit</button></div>
-    <div class="card"><h3>🎁 New Customer Bonus</h3><p>Admin set bonus ₹100/₹200/₹500.</p></div>
-  </div>
-</section>
-
-<section id="workflow" class="view">
- <h1>Complete Workflow Demo</h1>
- <div class="flow"><div class="flowStep"><span>👤</span>Customer Places Order</div><div class="flowStep"><span>🏪</span>Merchant Prepares</div><div class="flowStep"><span>⚙️</span>System Assigns Rider</div><div class="flowStep"><span>🛵</span>Rider Delivers</div></div>
- <div class="grid">
-  <div class="card"><h3>Customer Sees</h3><p>Item price, delivery charge, total amount.</p></div>
-  <div class="card"><h3>Merchant Does Not See</h3><p>Customer full address, phone, rider earning, admin commission.</p></div>
-  <div class="card"><h3>Rider Does Not See</h3><p>Without code: customer name/address/item/amount hidden.</p></div>
-  <div class="card"><h3>Pricing Separate</h3><p>Customer charge, merchant settlement, rider payout are separate.</p></div>
-  <div class="card"><h3>Retail + Wholesale</h3><p>Retail simple. Wholesale bulk/carton/khata.</p></div>
-  <div class="card"><h3>Important Rule</h3><p>Admin has full control over system.</p></div>
- </div>
-</section>
-</main>
-
-<nav class="bottom"><a href="/">🏠 Customer</a><a href="/admin">🛡️ Admin</a><a href="/billing">🧾 Billing</a><a href="/rider">🛵 Rider</a><a href="/workflow">🔁 Flow</a></nav>
-</div>
-
-<script>
-function Product({}){}
-function route(){
- const p=location.pathname;
- const id=p.startsWith('/admin')?'admin':p.startsWith('/billing')?'billing':p.startsWith('/rider')?'rider':p.startsWith('/workflow')?'workflow':'customer';
- document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
- document.getElementById(id).classList.add('active');
-}
-function setLang(l){alert('Language set: '+l+' — full app/products/categories/units labels ready in final logic');}
-route();
-if('serviceWorker' in navigator){navigator.serviceWorker.register('/service-worker.js').catch(()=>{});}
-</script>
-<script>
-function productHtml(emoji,name,price,old,badge){return `<div class="card product"><div class="pimg">${emoji}</div><div><span class="badge blue">${badge}</span><h3>${name}</h3><p><span class="price">${price}</span> <span class="old">${old}</span></p><div class="qty"><button>-</button><b>1</b><button>+</button></div></div></div>`}
-document.querySelectorAll('Product').forEach(()=>{});
-</script>
-</body>
-</html>
+</main><nav class='bottom'><span>🏠 Home</span><span>▦ Categories</span><span>🛒 Cart</span><span>📒 Khata</span><span>👤 Profile</span></nav></body></html>
