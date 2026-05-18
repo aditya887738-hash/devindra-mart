@@ -1,14 +1,48 @@
+
 <!doctype html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#123AAE" />
-    <link rel="manifest" href="/manifest.json" />
-    <title>Devindra Mart</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Devindra Mart</title>
+<style>
+body{font-family:Arial;background:#f4f7ff;margin:0;padding:20px}
+.top{background:#123AAE;color:#fff;padding:18px;border-radius:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:20px}
+.card{background:#fff;padding:20px;border-radius:18px;border:1px solid #d8e4ff}
+a{display:inline-block;margin-top:10px;background:#123AAE;color:#fff;padding:10px 14px;border-radius:10px;text-decoration:none}
+</style>
+</head>
+<body>
+<div class="top">
+<h1>Devindra Mart</h1>
+<p>Wholesale + Retail Marketplace</p>
+</div>
+
+<div class="grid">
+<div class="card">
+<h2>Customer App</h2>
+<p>Main marketplace customer app.</p>
+<a href="/customer.html">Open</a>
+</div>
+
+<div class="card">
+<h2>Admin App</h2>
+<p>Admin dashboard & control.</p>
+<a href="/admin.html">Open</a>
+</div>
+
+<div class="card">
+<h2>Billing App</h2>
+<p>Billing & merchant panel.</p>
+<a href="/billing.html">Open</a>
+</div>
+
+<div class="card">
+<h2>Rider App</h2>
+<p>Pickup code unlock system.</p>
+<a href="/rider.html">Open</a>
+</div>
+</div>
+</body>
 </html>
