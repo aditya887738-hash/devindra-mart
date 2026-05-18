@@ -1,0 +1,11 @@
+Included Planning:
+- Multi-store support
+- Wholesale/Retail logic
+- Rider unlock system
+- Admin controls
+- Khata system
+- Delivery logic
+- PWA support
+- Global support number
+- WhatsApp wholesale rule
+- Firebase architecture
