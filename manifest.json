@@ -1,9 +1,12 @@
 {
-  "name": "Devindra Mart",
-  "short_name": "Devindra",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#F4F7FF",
-  "theme_color": "#123AAE",
-  "orientation": "portrait"
+  "name":"Devindra Mart",
+  "short_name":"Devindra Mart",
+  "start_url":"/",
+  "display":"standalone",
+  "background_color":"#eff6ff",
+  "theme_color":"#0b4da2",
+  "icons":[
+    {"src":"/assets/icon-192.png","sizes":"192x192","type":"image/png"},
+    {"src":"/assets/icon-512.png","sizes":"512x512","type":"image/png"}
+  ]
 }

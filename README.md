@@ -1,21 +1,37 @@
-# Devindra Mart Real Flow Build
+# Devindra Mart — Final Advanced React/Firebase Build
 
-Netlify:
-- Build command: npm run build
-- Publish directory: dist
-
-Routes:
-- `/` Customer App
+## Routes
+- `/` Customer App only
 - `/admin` Admin App
-- `/billing` Billing App
+- `/billing` Billing/Merchant App
 - `/rider` Rider App
 
-Included:
-- Uploaded Excel sample in `/public/assets/devindra-products.xlsx`
-- Uploaded ad/banner images in `/public/assets/`
-- Customer Devindra Mart order creates app order + opens WhatsApp
-- Other stores use app-only order
-- Admin Excel upload imports products
-- Admin Cloudinary upload using `dmwznjgvr` + `devindra_upload`
-- Billing sees orders and marks ready
-- Rider unlocks only by pickup code
+## Vercel / Netlify
+- Build command: `npm run build`
+- Output directory: `dist`
+- Install command: `npm install`
+- Root directory: `./`
+
+## Environment Variables
+Use your Firebase + Cloudinary values:
+- VITE_FIREBASE_API_KEY
+- VITE_FIREBASE_AUTH_DOMAIN
+- VITE_FIREBASE_PROJECT_ID
+- VITE_FIREBASE_STORAGE_BUCKET
+- VITE_FIREBASE_MESSAGING_SENDER_ID
+- VITE_FIREBASE_APP_ID
+- VITE_FIREBASE_MEASUREMENT_ID
+- VITE_CLOUDINARY_CLOUD_NAME
+- VITE_CLOUDINARY_UPLOAD_PRESET
+- VITE_WHATSAPP_ORDER_NUMBER
+- VITE_SUPPORT_NUMBER
+
+## Included
+- `public/assets/banner-main.png`
+- `public/assets/logo.png`
+- `public/assets/devindra-products.xlsx`
+- `src/main.jsx`
+- `src/style.css`
+
+## Phone upload rule
+Extract ZIP, open folder, select **public + src + root files** together. Do not upload ZIP itself to GitHub.
