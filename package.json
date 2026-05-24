@@ -1,0 +1,11 @@
+{
+  "name": "devindra-mart",
+  "version": "1.0.0",
+  "dependencies": {
+    "next": "14.2.0",
+    "react": "18.2.0",
+    "firebase": "10.12.0",
+    "framer-motion": "11.0.0",
+    "@sentry/nextjs": "7.100.0"
+  }
+}
